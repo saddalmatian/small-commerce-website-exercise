@@ -1,0 +1,451 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+	font-family: midfont;
+	src:url('../fonts/Roboto-Light.ttf'),
+		url('../fonts/Roboto-Light.eot'),
+		url('../fonts/Roboto-Light.woff');
+}
+body{
+	font-family: midfont;
+}
+.contentbox{
+	height: 350px;
+	background-color:#FFFFFF;
+	border: solid 1px #FFFFFF;
+}
+.contentbox a{
+	display: block;
+	color: #000000;
+	text-decoration: none;
+	transition: all ease .5s;
+}
+.contentbox a:hover{
+	display: block;
+	color: #1BA8FF;
+	transition: all ease .5s;
+}
+.owl-carousel{
+	width: auto !important;
+}
+/*=====HEAD=====*/
+#bghead{
+	background-color: #1ba8ff;
+	height: 50px;
+}
+#logo{
+	height: 40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#searchfill{
+	height: 30px;
+	width: 90%;
+	float: left;
+	border: none;
+	margin-top: 10px;
+}
+#searchbtn{
+	height: 30px;
+	width: 10%;
+	margin-top: 10px;
+	background-color: #DDDDDD;
+	border:none;
+	font-size: 18px;
+	float: left;
+	color: #1ba8ff;
+	
+}
+#login ul li{
+	display: block;
+	float: right;
+	margin-top: 14px;
+	color: #FFFFFF;
+}
+#login ul li a{
+	display: block;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-decoration: none;
+	color:#FFFFFF;
+	transition: all ease .5s;
+}
+
+/*=====CONTENT=====*/
+.products a{
+	display: block;
+	color:#666666;
+	text-decoration: none;
+	transition: all ease .5s;
+	font-size: 14pt;
+}
+/*=====FOOOTER=====*/
+.footer1 ul li{
+	display: block;
+	font-size: 10pt;
+	
+}
+.footer1 ul li a{
+	display: block;
+	text-decoration: none;
+	color: #333;
+	transition: all ease .5s;
+	padding-top: 5px;
+}
+h2{
+	font-size: 24pt;
+	
+}
+hr{
+	display: block;
+	border-width: 2px;
+	
+}
+.iconpublic{
+	color: #333;
+	transition: all ease .5s;
+}
+.imgproduct{
+	padding-top: 40px;
+}
+.infoproduct{
+	padding-top: 20px;
+}
+#p1{
+	display: block;
+	float: left;
+	padding-right: 20px;
+	font-size: 18pt;
+	margin-top: 10px;
+	
+}
+
+#p2{
+	display: block;
+	float: left;
+	font-size: 18pt;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border: solid 2pt #000000;
+	margin-top: 10px;
+}
+#chonmua{
+	display: block;
+	float: left;
+	font-size: 18pt;
+	font-weight: bold;
+	margin-left: 20px;
+	text-decoration: none;
+	background-color:#1BA8FF;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #FFFFFF;
+	border-radius: 10px;
+}
+#chonmua:hover{
+	background-color: #009DFF;
+}
+#p3{
+	display: block;
+	float: left;
+	padding-right: 20px;
+	font-size: 14pt;
+	margin-top: 10px;
+}
+#p4{
+	display: block;
+	float: left;
+	font-size: 14pt;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border: solid 2pt #000000;
+	margin-top: 10px;
+}
+#chonmua2{
+	display: block;
+	float: left;
+	font-size: 14pt;
+	font-weight: bold;
+	margin-left: 20px;
+	text-decoration: none;
+	background-color:#1BA8FF;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #FFFFFF;
+	border-radius: 10px;
+}
+
+
+/*=====================================================================================================================*/
+/*=====ONLY LARGE=====*/
+@media (min-width:1200px){
+	/*---navi---*/
+	#login ul li{
+		font-size: 12pt;
+	}
+	#login ul li a:hover{
+	color: #555555;
+	transition: all ease .5s;
+	}
+	#navi ul{
+	display: block;
+	margin-left: 233.0335px;
+	}
+	#navi ul li{
+		font-size: 14pt;
+	}
+	#navi ul li a:hover{
+	color: #555555;
+	transition: all ease .5s
+	}
+	/*---banner1---*/
+	#banner1{
+		height: 600px;
+	}
+	/*=====CONTENT=====*/
+	.theh{
+		border-bottom: solid 1pt #1BA8FF;
+	}
+	h3{
+		font-size: 16pt;
+	}
+	.products a{
+	font-size: 14pt;
+	}
+	.products a:hover{
+	color:#1BA8FF;
+	transition: all ease .5s;
+	
+	}
+	/*=====FOOOTER=====*/
+
+	.footer1 ul li a{
+	padding-left: 30px;
+	padding-right: 30px;
+	}
+	.footer1 ul li a:hover{
+	color:#1BA8FF;
+	transition: all ease .5s
+	}
+	.iconpublic{
+	color: #333;
+	font-size: 30pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	transition: all ease .5s;
+	}
+	.iconpublic:hover{
+	color:#1BA8FF;
+	transition: all ease .5s;
+	}
+	.splq{
+		margin-top: 20px;
+		font-size: 16pt;
+		border-bottom: solid 1pt #000000;
+	}
+
+}
+/*=====ONLY MEDIUM=====*/
+@media (min-width:992px) and (max-width:1199px){
+	/*---navi---*/
+	#login ul li{
+		font-size: 10pt;
+		margin-top: 15px;
+	}
+	#login ul li a:hover{
+	color: #555555;
+	transition: all ease .5s;
+	}
+	#navi ul{
+	display: block;
+	margin-left: 160.0335px;
+	}
+	#navi ul li a:hover{
+	color: #555555;
+	transition: all ease .5s
+	}
+	/*---banner1---*/
+	#banner1{
+		height: 350px;
+	}
+	/*=====CONTENT=====*/
+	.theh{
+		border-bottom: solid 1pt #1BA8FF;
+		font-size: 20px;
+	}
+	h3{
+		font-size: 16pt;
+	}
+	.products a{
+	font-size: 14pt;
+	}
+	.products a:hover{
+	color:#1BA8FF;
+	transition: all ease .5s;
+	
+	}
+	/*=====FOOOTER=====*/
+
+	.footer1 ul li a{
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-left: -30px;
+	}
+	.footer1 ul li a:hover{
+	color:#1BA8FF;
+	transition: all ease .5s
+	}
+	.iconpublic{
+	color: #333;
+	font-size: 30pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	transition: all ease .5s;
+	}
+	.iconpublic:hover{
+	color:#1BA8FF;
+	transition: all ease .5s;
+	}
+}
+/*=====ONLY TABLET=====*/
+@media (min-width:768px) and (max-width:991px){
+	/*---navi---*/
+	#login ul li{
+		font-size: 10pt;
+		margin-top: 15px;
+	}
+	#navi ul{
+	display: block;
+	margin-left: 32.0335px;
+	}
+	/*---banner1---*/
+	#banner1{
+		height: 260px;
+		padding:0px;
+	}
+	/*=====CONTENT=====*/
+	.theh{
+		border-bottom: solid 1pt #1BA8FF;
+		font-size: 18px;
+	}
+	h3{
+		font-size: 14pt;
+	}
+	.products a{
+	font-size: 12pt;
+	}
+
+	/*=====FOOTER=====*/
+	.footer1 ul li{
+	margin-left: -45px;
+	padding-left: 30px;
+	padding-right: 30px; 
+	}
+	.iconpublic{
+	color: #333;
+	font-size: 20pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	}
+	.iconpublic:hover{
+	color:#333;
+	}
+	.imgproduct{
+		width: 80%;
+		margin-left: 75px;
+	}
+}
+/*=====ONLY MOBILE=====*/
+@media (max-width:767px){
+	/*=====NAVI MOBILE=====*/
+	#bgnavimobile{
+		background-color: #1ba8ff;
+		height: 43px;
+		padding-left: 0px;
+		padding-right: 0px;
+		position: sticky;
+		z-index: 2000;
+		top: 0;
+	}
+	#logomobile{
+		height: 40px;
+		margin-left: 24.04165px;
+	}
+	#icon3line,#iconsearch{
+		font-size:30px;
+		color: #FFFFFF;
+		cursor: pointer;
+	}
+
+	/*---banner1---*/
+	#banner1{
+		height: 160px;
+	}
+	/*=====HAMBURGER=====*/
+	#mobilenavi{
+		padding:0px;
+		position: fixed;
+		z-index: 1900;
+		
+	}
+	#mobilenavi ul{
+		list-style-type: none;
+		margin:0px;
+		padding:0px;
+	}
+	#mobilenavi ul li{
+		display: block;
+	}
+	#mobilenavi ul li a{
+		display: block;
+		height: 60px;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 15px;
+		font-size: 18pt;
+		text-decoration: none;
+		color: #FFFFFF;
+		background-color: #1BA8FF;
+		border-top: solid 1px #FFFFFF;
+		transition: all ease .5s;
+	}
+	/*=====CONTENT=====*/
+	.theh{
+		border-bottom: solid 1pt #1BA8FF;
+		font-size: 16px;
+	}
+	h3{
+		font-size: 12pt;
+	}
+	#nhaychu{
+		font-size: 10pt;
+	}
+	.products a{
+		font-size: 10pt;
+	}
+	/*=====FOOTER=====*/
+	.footer1 ul li{
+	margin-left: -40px;
+	}
+	.iconpublic{
+	color: #333;
+	font-size: 20pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	}
+	.iconpublic:hover{
+	color:#333;
+	}
+	.imgproduct{
+		width: 80%;
+		margin-left: 50px;
+	}
+}
