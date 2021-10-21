@@ -1,0 +1,338 @@
+.container {
+  max-width: 960px;
+}
+html{
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+.contentFooter{
+  animation-name: fade;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+}
+.overflow-hidden { overflow: hidden; }
+
+.listProducts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 90%;
+  margin: auto;
+  animation-name: fade;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.5s;
+}
+.cardProduct{
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 7px 7px 7px 7px;
+  width: 30%;
+  max-width: 30%;
+  height: 600px;
+  max-height: 600px;
+  margin: 20px 20px 60px 20px;
+  font-family: sans-serif;
+  
+}
+.cardImg{
+  border-radius: 7px 0 0 7px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: 70%;
+}
+.cardContent{
+  background-color: rgb(247, 247, 247);
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 7px 7px 7px 7px;
+    display: block;
+    height: 30%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    
+}
+.listClients{
+  width: 90%;
+  height: 800px;
+  margin: auto;
+  animation-name: fade;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+}
+
+
+.home{
+  animation-name: fadeHome;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 2s;
+}
+
+.product-info{
+  animation-name: fade;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.5s;
+}
+
+#myInput {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+#createClients{
+  animation-name: fadeButton;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2s;
+}
+
+.clients-info{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  animation-name: fadeButton;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+.clientsImg{
+  align-items: center;
+}
+.climg{
+  max-width:360px;
+  max-height:500px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+.clientsInfo{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: justify;
+}
+.clientsDiv{
+  width: 70%;
+  height: 800px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  animation-name: rightIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+}
+.clientsDivz{
+  width: 70%;
+  height: 800px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  animation-name: fadeHome;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+}
+
+.listSelected{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 600px;
+  animation-name: fadeHome;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 7px 7px 7px 7px;
+}
+.total{
+  display: flex;
+  font-family: 'Times New Roman', Times, serif;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 20px;
+  width: 80%;
+}
+.leftSelect{
+  width: 70%;
+  margin-right: 10px;
+  margin-top: 10fpx;
+}
+.rightSelect{
+  width: 30%;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.priceSelect{
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  width: 50%;
+}
+.infoSelect{
+  display: inline-block;
+  width: 50%;
+}
+.itemSelect{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.listRecepit{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  height: 600px;
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 7px 7px 7px 7px;
+}
+.receipt{
+  font-family: 'Times New Roman', Times, serif;
+  margin: 10px;
+  animation-name: fadeButton;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.5 s;
+}
+.createForm{
+  width: 80%;
+  margin:auto;
+  margin-top: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 7px 7px 7px 7px;
+}
+/* ----------------------------------------------------------------------------------------------------- */
+@keyframes fade {
+  0% {
+    opacity: 0.5;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes leftOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+@keyframes rightIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes fadeHome {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeButton {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
