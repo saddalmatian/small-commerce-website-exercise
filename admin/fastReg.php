@@ -7,8 +7,6 @@ function UnsetAll()
     unset($_POST["company"]);
     unset($_POST["FAX"]);
     unset($_POST["add1"]);
-    unset($_POST["add2"]);
-    unset($_POST["add3"]);
 }
 $sql = 'SELECT MSKH FROM KHACHHANG';
 $result = $conn->query($sql);
@@ -36,7 +34,7 @@ if ($conn->query($sql) === TRUE) {
     if ($_POST["add1"] != "")
         $addCount += 1;
     for ($i = 1; $i <= $addCount; $i++) {
-        $sql1 = 'INSERT INTO DIACHIKH VALUES("' . $MSKH . 'DC' . $i . '","' . $_POST["add" . $i . ""] . '","' . $MSKH . '");';
+        $sql1 = 'INSERT INTO DIACHIKH VALUES("' . $MSKH . 'DC' . $i . '","' . $_POST["add" . $i . ""] . '","' . $MSKH . '","'.$_POST["pass"].'");';
         if ($conn->query($sql1) === FALSE) {
             echo 7;
             UnsetAll();

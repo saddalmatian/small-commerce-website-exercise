@@ -27,6 +27,10 @@
                 <label for='phoneInput' id='labelPhone'>Số điện thoại</label>
                 <input type='number' name="phone" class='form-control' id='phoneInput' min='0' placeholder='Ví dụ: 0914764104' oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại')" oninput="this.setCustomValidity('')" required>
             </div>
+            <div class='form-group col-md-6'>
+                <label for='phoneInput' id='labelPhone'>Mật khẩu</label>
+                <input type='number' name="pass" class='form-control' id='pasInput' min='0' placeholder='' oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" required>
+            </div>
         </div>
         <div class='form-row'>
             <div class='form-group col-md-6'>

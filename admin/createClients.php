@@ -18,6 +18,10 @@ else
                 <label for='phoneInput' id='labelPhone'>Số điện thoại</label>
                 <input type='number' class='form-control' id='phoneInput' min='0' placeholder='Ví dụ: 0914764104' required>
             </div>
+            <div class='form-group col-md-6'>
+            <label for='phoneInput' id='labelPhone'>Mật khẩu</label>
+            <input type='text' class='form-control' id='passInput' required>
+        </div>
         </div>
         <div class='form-row'>
             <div class='form-group col-md-6'>
@@ -60,8 +64,7 @@ $("#btnCreate").on("click", function() {
     var phone = $("#phoneInput").val();
     var FAX = $("#faxInput").val();
     var add1 = $("#addressInput1").val();
-    var add2 = $("#addressInput2").val();
-    var add3 = $("#addressInput3").val();
+    var pass=$("#passInput").val()
 
     $.ajax({
         type: "POST",
@@ -73,8 +76,7 @@ $("#btnCreate").on("click", function() {
             phone: phone,
             FAX: FAX,
             add1: add1,
-            add2: add2,
-            add3: add3
+            pass:pass
         }
     }).done(function(response) {
         if (response == "1") {

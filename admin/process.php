@@ -56,7 +56,7 @@ else {
                 $_POST["FAX"] = 'null';
             else
                 $_POST["FAX"] = "\"" . $_POST["FAX"] . "\"";
-            $sql = 'INSERT INTO KHACHHANG VALUES("' . $MSKH . '","' . $_POST["name"] . '",' . $_POST["company"] . ',"' . $_POST["phone"] . '",' . $_POST["FAX"] . ');';
+            $sql = 'INSERT INTO KHACHHANG VALUES("' . $MSKH . '","' . $_POST["name"] . '",' . $_POST["company"] . ',"' . $_POST["phone"] . '",' . $_POST["FAX"] . ',"'.$_POST["pass"].'");';
 
             if ($conn->query($sql) === TRUE) {
                 $addCount = 0;
