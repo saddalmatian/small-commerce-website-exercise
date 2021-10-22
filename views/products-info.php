@@ -93,16 +93,16 @@
                 <div class="col-md-6"><img class="card-img" src="../imgs/' . $row["mahinh"] . '" /></div>
                 <div class="col-md-6">
                     <div class="small mb-1">ID: ' . $row["MSHH"] . '</div>
-                    <input class="display-5 fw-bolder" id="ten'.$row["MSHH"].'" value="'.$row["TenHH"].'" style="width:100%;"/>
+                    <input class="display-5 fw-bolder" id="ten' . $row["MSHH"] . '" value="' . $row["TenHH"] . '" style="width:100%;"/>
                     <div class="fs-5 mb-5">
-                    <input class="display-5 fw-bolder" id="gia'.$row["MSHH"].'" value="'.$row["Gia"].'";"/>Đ
+                    <input class="display-5 fw-bolder" id="gia' . $row["MSHH"] . '" value="' . $row["Gia"] . '";"/>Đ
                     </div>
-                    <textarea id="qc'.$row["MSHH"].'" rows="5" cols="60"/>
-                    '.$row["QuyCach"].'
+                    <textarea id="qc' . $row["MSHH"] . '" rows="5" cols="60"/>
+                    ' . $row["QuyCach"] . '
                     </textarea>
                     <div class="d-flex">
-                            <input class="btn btn-danger id="btnDel" onclick="delProd(\''.$row["MSHH"].'\')" flex-shrink-0" type="button" value="Xóa sản phẩm" />
-                            <input class="btn btn-success id="btnUp" onclick="upProd(\''.$row["MSHH"].'\')" flex-shrink-0" type="button" value="Sửa sản phẩm" />
+                            <input class="btn btn-danger id="btnDel" onclick="delProd(\'' . $row["MSHH"] . '\')" flex-shrink-0" type="button" value="Xóa sản phẩm" />
+                            <input class="btn btn-success id="btnUp" onclick="upProd(\'' . $row["MSHH"] . '\')" flex-shrink-0" type="button" value="Sửa sản phẩm" />
                             </div>
                 </div>
             </div>
@@ -115,6 +115,26 @@
     <div id="footerDiv"></div>
 </body>
 <script type="text/javascript">
+    function addToCart(productID) {
+        $.ajax({
+            type: "POST",
+            url: "../admin/process.php",
+            data: {
+                action: "addCart",
+                productID: productID
+            }
+        }).done(function(response) {
+            if (response == "1") {
+                alert("Có lỗi trong khi thêm");
+                window.location = "../main.php";
+            }
+            if (response == "2") {
+                alert("Thêm thành công");
+                window.location = "../main.php";
+            }
+        })
+    }
+
     function delProd(productID) {
         $.ajax({
             type: "POST",
@@ -124,39 +144,39 @@
                 productID: productID
             }
         }).done(function(response) {
-            if (response == "1"){
+            if (response == "1") {
                 alert("Xóa thành công");
-            window.location="../main.php";
+                window.location = "../main.php";
             }
-            if (response == "2"){
+            if (response == "2") {
                 alert("Có lỗi trong khi xóa");
-            window.location="../main.php";
+                window.location = "../main.php";
             }
         })
     }
 
     function upProd(productID) {
-        var name=$("#ten"+productID).val();
-        var price=$('#gia'+productID).val();
-        var qualify=$('#qc'+productID).val();
+        var name = $("#ten" + productID).val();
+        var price = $('#gia' + productID).val();
+        var qualify = $('#qc' + productID).val();
         $.ajax({
             type: "POST",
             url: "../admin/process.php",
             data: {
                 action: "upProd",
                 productID: productID,
-                name:name,
-                price:price,
-                qualify:qualify
+                name: name,
+                price: price,
+                qualify: qualify
             }
         }).done(function(response) {
-            if (response == "1"){
+            if (response == "1") {
                 alert("Sửa thành công");
-            window.location="../main.php";
+                window.location = "../main.php";
             }
-            if (response == "2"){
+            if (response == "2") {
                 alert("Có lỗi trong khi sửa");
-            window.location="../main.php";
+                window.location = "../main.php";
             }
         })
     }
