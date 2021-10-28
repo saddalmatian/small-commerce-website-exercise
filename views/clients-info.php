@@ -52,7 +52,7 @@
         </div>
         <div class="clientsInfo">
             <hr>
-            <p><h3 style="font-weight: bolder;">Họ tên khách hàng:</h3>
+            <p><h3 style="font-weight: bolder;">Tải khoản khách hàng:</h3>
             <h5>' . $row["HoTenKH"] . '</h5>
             <hr>
             <p><h3 style="font-weight: bolder;">Tên công ty:</h3>

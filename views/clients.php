@@ -20,7 +20,7 @@ else {
     <table id="myTable">
         <tr class="header">
             <th style="width:15%">Mã số khách hàng</th>
-            <th style="width:25%">Tên khách hàng</th>
+            <th style="width:25%">Tài khoản khách hàng</th>
             <th style="width:30%">Tên công ty</th>
             <th style="width:20%">Số điện thoại</th>
             <th style="width:10%">Số FAX</th>

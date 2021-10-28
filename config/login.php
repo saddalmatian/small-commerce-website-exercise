@@ -6,7 +6,7 @@ $name = $_POST["inputName"];
 $pass = $_POST["inputPassword"];
 
 $sql = "SELECT * FROM NhanVien WHERE HoTenNV='" . $name . "' LIMIT 1;";
-$sql1 = "SELECT * FROM KhachHang WHERE HoTenKH='" . $name . "' LIMIT 1;";
+$sql1 = "SELECT * FROM KhachHang WHERE MSKH='" . $name . "' LIMIT 1;";
 
 $result = $conn->query($sql);
 $result1 = $conn->query($sql1);

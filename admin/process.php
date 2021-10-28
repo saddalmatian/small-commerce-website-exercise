@@ -56,7 +56,7 @@ else {
                 $_POST["FAX"] = 'null';
             else
                 $_POST["FAX"] = "\"" . $_POST["FAX"] . "\"";
-            $sql = 'INSERT INTO KHACHHANG VALUES("' . $MSKH . '","' . $_POST["name"] . '",' . $_POST["company"] . ',"' . $_POST["phone"] . '",' . $_POST["FAX"] . ',"'.$_POST["pass"].'");';
+            $sql = 'INSERT INTO KHACHHANG VALUES("' . $MSKH . '","' . $_POST["name"] . '",' . $_POST["company"] . ',"' . $_POST["phone"] . '",' . $_POST["FAX"] . ',"' . $_POST["pass"] . '");';
 
             if ($conn->query($sql) === TRUE) {
                 $addCount = 0;
@@ -95,6 +95,7 @@ else {
     } else if ($_POST["action"] == "removeFromCart") {
         unset($_SESSION["cartList"][$_POST["prodID"]]);
         echo '1';
+
     } else if ($_POST["action"] == "checkCart") {
         $sentDate = $_POST["currentDate"];
         $takeDate = date('Y-m-d', strtotime($sentDate . ' + 3 days'));
@@ -108,7 +109,7 @@ else {
             $count = 1;
         $MSDH = "DH" . $count . $_SESSION["iduser"];
         $TT = "Chưa xác nhận";
-        $sql = 'INSERT INTO DATHANG VALUES(\'' . $MSDH . '\',\'' . $_SESSION['iduser'] . '\',NULL,\'' . $sentDate . '\',\'' . $takeDate . '\',\'' . $TT . '\')';
+        $sql = 'INSERT INTO DATHANG VALUES(\'' . $MSDH . '\',\'' . $_SESSION['iduser'] . '\',NULL,\'' . $sentDate . '\',\'' . $takeDate . '\',\'' . $TT . '\',"'.$_POST["address"].'")';
         if ($conn->query($sql)) {
             foreach ($_SESSION["cartList"] as $item => $quantity) {
                 $sql1 = 'SELECT Gia FROM HANGHOA WHERE MSHH="' . $item . '";';
@@ -118,14 +119,21 @@ else {
                 $total = $row["Gia"] * $quantity;
 
                 $sql2 = 'INSERT INTO ChiTietDatHang VALUES("' . $MSDH . '","' . $item . '","' . $quantity . '","' . $total . '","0")';
-                if (!$conn->query($sql2)) {
+                $sql4 = "SELECT SoLuongHang From Hanghoa where MSHH='".$item."' ;";
+                $result4 = $conn->query($sql4);
+                $row4=$result4->fetch_assoc();
+                $slht=$row4["SoLuongHang"] - $quantity;
+                $sql3 = 'UPDATE HANGHOA SET SoLuongHang='.$slht.' WHERE MSHH="'.$item.'";';
+                
+                if (!$conn->query($sql2) || !$conn->query($sql3)) {
                     echo 3;
                     return;
                 }
             }
             unset($_SESSION["cartList"]);
+            $_SESSION["show"]="personal";
             echo 2;
-        } else echo 1;
+        } else echo $sql;
     } else if ($_POST["action"] == "updateQuantity") {
         $_SESSION["cartList"][$_POST["prodID"]] = $_POST["quantity"];
     } else if ($_POST["action"] == "logout") {
@@ -147,14 +155,71 @@ else {
                 echo 1;
             }
         } else echo 2;
-    }
-    else if ($_POST["action"] == "upProd") {
-        $sql = "UPDATE HANGHOA SET TenHH='".$_POST["name"]."', Gia='" . $_POST["price"] . "',QuyCach='".$_POST["qualify"]."'  WHERE MSHH='" . $_POST["productID"] . "';";
+    } else if ($_POST["action"] == "upProd") {
+        $sql = "UPDATE HANGHOA SET TenHH='" . $_POST["name"] . "', Gia='" . $_POST["price"] . "',QuyCach='" . $_POST["qualify"] . "'  WHERE MSHH='" . $_POST["productID"] . "';";
         if ($conn->query($sql)) {
-                echo 1;
-            }
-        else echo 2;
+            echo 1;
+        } else echo 2;
+    } else if ($_POST["action"] == "upClients") {
+        $sdt = $_POST["sdt"];
+        $pass = $_POST["pass"];
+        $company = $_POST["company"];
+        $fax = $_POST["fax"];
+        $address = $_POST["address"];
+        $sql1 = "select SoDienThoai from khachhang where mskh='" . $_SESSION["iduser"] . "';";
+        $result = $conn->query($sql1);
+        $row = $result->fetch_assoc();
+        if (!$row["SoDienThoai"] == $sdt) {
+
+            $sql = "UPDATE KHACHHANG SET SoDienThoai='" . $sdt . "',Pass='" . $pass . "',TenCongTy='" . $company . "',SoFax='" . $fax . "';";
+            if ($conn->query($sql)) {
+                $count = 1;
+                $sql1 = "select * from DiaChiKH where mskh='" . $_SESSION["iduser"] . "';";
+                $result = $conn->query($sql1);
+                if ($address == "")
+                    echo 1;
+                else {
+                    $sql1 = "select * from DiaChiKH where mskh='" . $_SESSION["iduser"] . "';";
+                    $result = $conn->query($sql1);
+                    while ($row = $result->fetch_assoc()) {
+                        $count += 1;
+                    }
+                    $MADC = $_SESSION["iduser"] . "DC" . $count;
+                    $sql1 = "INSERT INTO DIACHIKH VALUES('" . $MADC . "','" . $address . "','" . $_SESSION["iduser"] . "');";
+                    if ($conn->query($sql1))
+                        echo 1;
+                    else echo $conn->error;
+                }
+            } else echo $conn->error;
+        } else {
+            $sql = "UPDATE KHACHHANG SET Pass='" . $pass . "',TenCongTy='" . $company . "',SoFax='" . $fax . "' WHERE MSKH='" . $_SESSION["iduser"] . "';";
+            if ($conn->query($sql)) {
+                $count = 1;
+                if ($address == "")
+                    echo 1;
+                else {
+                    $sql1 = "select * from DiaChiKH where mskh='" . $_SESSION["iduser"] . "';";
+                    $result = $conn->query($sql1);
+                    while ($row = $result->fetch_assoc()) {
+                        $count += 1;
+                    }
+                    $MADC = $_SESSION["iduser"] . "DC" . $count;
+                    $sql1 = "INSERT INTO DIACHIKH VALUES('" . $MADC . "','" . $address . "','" . $_SESSION["iduser"] . "');";
+                    if ($conn->query($sql1))
+                        echo 1;
+                    else echo $conn->error;
+                }
+            } else echo $conn->error;
+        }
+    }else if($_POST["action"]=="addCate"){
+        $name = $_POST["cateCode"];
+        $code = $_POST["cateName"];
+        $sql = "INSERT INTO LOAIHANGHOA VALUES('".$name."','".$code."')";
+        if($conn->query($sql))
+            echo "Thành công";
+        else 
+            echo "Tồn tại mã loại hàng này";
+        
+
     }
-
-
 }

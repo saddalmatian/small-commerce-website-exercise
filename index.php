@@ -26,7 +26,7 @@ if(isset($_SESSION["user"]))
     <img class="mb-4" src="https://cafeandbooks.files.wordpress.com/2015/07/dscn4570.jpg" alt="" width="72" height="72">
 
     <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
-    <input type="text" name="inputName" class="form-control" placeholder="Họ và tên" autofocus="" oninvalid="this.setCustomValidity('Vui lòng nhập tên người dùng')" oninput="this.setCustomValidity('')" required/>
+    <input type="text" name="inputName" class="form-control" placeholder="Tên đăng nhập" autofocus="" oninvalid="this.setCustomValidity('Vui lòng nhập tên người dùng')" oninput="this.setCustomValidity('')" required/>
 
     <input type="password" name="inputPassword" class="form-control" placeholder="Mật khẩu" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" />
 

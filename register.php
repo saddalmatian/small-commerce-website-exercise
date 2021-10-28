@@ -28,8 +28,12 @@
                 <input type='number' name="phone" class='form-control' id='phoneInput' min='0' placeholder='Ví dụ: 0914764104' oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại')" oninput="this.setCustomValidity('')" required>
             </div>
             <div class='form-group col-md-6'>
+                <label for='accountInput' id='labelAccount'>Tài khoản</label>
+                <input type='text' name="account" class='form-control' id='accountInput' placeholder='' oninvalid="this.setCustomValidity('Vui lòng nhập tên tài khoản')" oninput="this.setCustomValidity('')" required>
+            </div>
+            <div class='form-group col-md-6'>
                 <label for='phoneInput' id='labelPhone'>Mật khẩu</label>
-                <input type='number' name="pass" class='form-control' id='pasInput' min='0' placeholder='' oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" required>
+                <input type='text' name="pass" class='form-control' id='pasInput' placeholder='' oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" required>
             </div>
         </div>
         <div class='form-row'>
@@ -51,7 +55,7 @@
 
 
        <button type="submit" class="btn btn-success">Hoàn Thành</button>
-       <input type="button" value="Trở về" class="btn btn-info">
+       <a href="index.php" class="btn btn-info">Trở về</a>
        
     </form>
 </div>

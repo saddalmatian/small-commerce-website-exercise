@@ -65,6 +65,16 @@ else {
                 </script>
                 <h5>' . $row["HoTenKH"] . '</h5>
                 <h5>' . $row["SoDienThoai"] . '</h5>
+                <select type="select" id="addressSelect" class="form-control">
+                                <option selected>Chọn địa chỉ</option>';
+                $sql = "SELECT * FROM DIACHIKH WHERE MSKH='" . $_SESSION["iduser"] . "';";
+                $result = $conn->query($sql);
+
+                while ($row = $result->fetch_assoc()) {
+                    echo '<option value ="'.$row["DiaChi"].'">' . $row["DiaChi"] . '</option>';
+                }
+                echo 
+                ' </select>
                 <hr>
                 <h4>Tổng số sản phẩm: <span id="totalCount"></span></h4>
                 <h4>Tổng tiền: <span id="totalPrice"></span>
@@ -80,6 +90,10 @@ else {
             var money = document.getElementById("totalPrice").innerHTML;
             var currentDate = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
             money = parseInt(money);    
+            var address=$("#addressSelect").val();
+            if(address=="Chọn địa chỉ"){
+            alert("Vui lòng nhập địa chỉ");
+            return;}
             if(money!=0){
             $.ajax({
                 type: "POST",
@@ -87,6 +101,7 @@ else {
                 data: {
                     action: "checkCart",
                     money: money,
+                    address: address,
                     currentDate: currentDate
                 }
             }).done(function(response) {
@@ -94,7 +109,7 @@ else {
                     alert("Lỗi thêm thông tin đặt hàng");
                 if(response=="2"){
                     alert("Đặt hàng thành công");
-                    window.location = window.location.href;}
+                    window.location = "../main.php";}
                 if(response=="3")
                     alert("Lỗi thêm thông tin chi tiết đặt hàng");
             })}
@@ -111,8 +126,9 @@ else {
                         prodID: id
                     }
                 })
-                .done(function(response) {
-                    window.location = window.location.href;
+                .done(function() {
+                    alert("Xóa thành công");
+                    window.location = "../main.php";
                 })
         }
     
@@ -172,7 +188,7 @@ if ($_SESSION["role"] == "NV") {
                 <td>' . $row["MSNV"] . '</td>
                 <td>' . $row["NgayDH"] . '</td>
                 <td>' . $row["NgayGH"] . '</td>
-                <td>' . $row["TrangThaiDH"] . '
+                <td id="TTDH">' . $row["TrangThaiDH"] . '
                 ';
         if ($row["TrangThaiDH"] == "Chưa xác nhận")
             echo '
@@ -200,6 +216,7 @@ function confirm(id) {
             $("#btn" + id).css({
                 "display": "none"
             });
+            document.getElementById("TTDH").innerHTML="Đã xác nhận";
         if (response == "2")
             alert(response);
     })
