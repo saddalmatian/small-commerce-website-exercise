@@ -18,7 +18,6 @@
     <div class='clientsDivz'>
     <form id='formClients' action="admin/fastReg.php" method="POST">
         <div class='form-row'>
-
             <div class='form-group col-md-6'>
                 <label for='htInput' id='labelHt'>Họ và tên</label>
                 <input type='text' name="name" class='form-control' id='htInput' placeholder='Ví dụ: Trần Thị Cúc Loan' required oninvalid="this.setCustomValidity('Vui lòng nhập tên người dùng')" oninput="this.setCustomValidity('')">

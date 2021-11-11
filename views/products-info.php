@@ -181,7 +181,6 @@
         })
     }
 
-
     $("#footerDiv").load("footer.php");
     $(document).ready(function() {
         $("#content").load('views/products.php');

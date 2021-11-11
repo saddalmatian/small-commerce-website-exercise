@@ -24,9 +24,14 @@ else {
         </div>
         <div class="form-group">
             <label for="cateProd">Mã loại hàng</label>
+          
             <select class="form-control" id="cateProd" name="cateProd" required>
-                <option>Truyện</option>
-                <option>Comic</option>
+            <?php
+                $sql = "SELECT * FROM LoaiHangHoa";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc())
+                    echo '<option>'.$row["TenLoaiHang"].'</option>'
+            ?>
             </select>
         </div>
         <div class="form-group">

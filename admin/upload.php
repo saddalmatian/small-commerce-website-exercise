@@ -1,8 +1,8 @@
 <?php
 include "../config/dbconnection.php";
 firstStep();
-if(!isset($_POST["nameProd"]))
-header("location:../main.php");
+if (!isset($_POST["nameProd"]))
+    header("location:../main.php");
 $target_dir = "../imgs/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -57,44 +57,45 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        if ($_POST["cateProd"] == "Truyện") {
-            $maloaihang = "Truyen";
-            $MSHH = "TD";
-        } else {
-            $maloaihang = "Comic";
-            $MSHH = "TT";
-        }
+        $sql = "SELECT MaLoaiHang FROM LoaiHangHoa WHERE TenLoaiHang='".$_POST["cateProd"]."' ";
+
+        $result = $conn->query($sql);
+        $row=$result->fetch_assoc();
+        $maloaihang=$row["MaLoaiHang"];
+   
         $sql = "SELECT * FROM HANGHOA WHERE MaLoaiHang='" . $maloaihang . "';";
         $count = 1;
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $count += 1;
-            }
-            $MSHH = $MSHH . $count;
+            }     
         }
+        $MSHH = $maloaihang.$count;
 
         $mahinh = basename($_FILES["fileToUpload"]["name"]);
-        $tenhanghoa=$_POST["nameProd"];
-        $quycach=$_POST["quycachProd"];
-        $soluonghang=$_POST["countProd"];
-        $gia=$_POST["priceProd"];
-        $sql="INSERT INTO HANGHOA VALUES('".$MSHH."','".$tenhanghoa."','".$quycach."','".$gia."','".$soluonghang."','".$maloaihang."');";
-        if($conn->query($sql))
-            $sql1="INSERT INTO HINHHANGHOA VALUES('".$mahinh."','".$mahinh."','".$MSHH."');";
-            if($conn->query($sql1)){
+        
+        $tenhanghoa = $_POST["nameProd"];
+        $quycach = $_POST["quycachProd"];
+        $soluonghang = $_POST["countProd"];
+        $gia = $_POST["priceProd"];
+        $sql = "INSERT INTO HANGHOA VALUES('" . $MSHH . "','" . $tenhanghoa . "','" . $quycach . "','" . $gia . "','" . $soluonghang . "','" . $maloaihang . "');";
+        echo $sql;
+        if ($conn->query($sql)) {
+            $sql1 = "INSERT INTO HINHHANGHOA VALUES('" . $mahinh . "','" . $mahinh . "','" . $MSHH . "');";
+            if ($conn->query($sql1)) {
                 echo '<script type="text/javascript">
                 alert("Tạo sản phẩm mới thành công");
                 window.location.href="../main.php";
                 </script>';
                 unset($_POST["nameProd"]);
             }
+        }
     } else {
         echo '<script type="text/javascript">
         alert("Có lỗi");
         window.location.href="../main.php";
         </script>';
         unset($_POST["nameProd"]);
-
     }
 }

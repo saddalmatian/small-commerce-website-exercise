@@ -95,7 +95,6 @@ else {
     } else if ($_POST["action"] == "removeFromCart") {
         unset($_SESSION["cartList"][$_POST["prodID"]]);
         echo '1';
-
     } else if ($_POST["action"] == "checkCart") {
         $sentDate = $_POST["currentDate"];
         $takeDate = date('Y-m-d', strtotime($sentDate . ' + 3 days'));
@@ -109,7 +108,7 @@ else {
             $count = 1;
         $MSDH = "DH" . $count . $_SESSION["iduser"];
         $TT = "Chưa xác nhận";
-        $sql = 'INSERT INTO DATHANG VALUES(\'' . $MSDH . '\',\'' . $_SESSION['iduser'] . '\',NULL,\'' . $sentDate . '\',\'' . $takeDate . '\',\'' . $TT . '\',"'.$_POST["address"].'")';
+        $sql = 'INSERT INTO DATHANG VALUES(\'' . $MSDH . '\',\'' . $_SESSION['iduser'] . '\',NULL,\'' . $sentDate . '\',\'' . $takeDate . '\',\'' . $TT . '\',"' . $_POST["address"] . '")';
         if ($conn->query($sql)) {
             foreach ($_SESSION["cartList"] as $item => $quantity) {
                 $sql1 = 'SELECT Gia FROM HANGHOA WHERE MSHH="' . $item . '";';
@@ -119,19 +118,19 @@ else {
                 $total = $row["Gia"] * $quantity;
 
                 $sql2 = 'INSERT INTO ChiTietDatHang VALUES("' . $MSDH . '","' . $item . '","' . $quantity . '","' . $total . '","0")';
-                $sql4 = "SELECT SoLuongHang From Hanghoa where MSHH='".$item."' ;";
+                $sql4 = "SELECT SoLuongHang From Hanghoa where MSHH='" . $item . "' ;";
                 $result4 = $conn->query($sql4);
-                $row4=$result4->fetch_assoc();
-                $slht=$row4["SoLuongHang"] - $quantity;
-                $sql3 = 'UPDATE HANGHOA SET SoLuongHang='.$slht.' WHERE MSHH="'.$item.'";';
-                
+                $row4 = $result4->fetch_assoc();
+                $slht = $row4["SoLuongHang"] - $quantity;
+                $sql3 = 'UPDATE HANGHOA SET SoLuongHang=' . $slht . ' WHERE MSHH="' . $item . '";';
+
                 if (!$conn->query($sql2) || !$conn->query($sql3)) {
                     echo 3;
                     return;
                 }
             }
             unset($_SESSION["cartList"]);
-            $_SESSION["show"]="personal";
+            $_SESSION["show"] = "personal";
             echo 2;
         } else echo $sql;
     } else if ($_POST["action"] == "updateQuantity") {
@@ -211,15 +210,50 @@ else {
                 }
             } else echo $conn->error;
         }
-    }else if($_POST["action"]=="addCate"){
+    } else if ($_POST["action"] == "addCate") {
         $name = $_POST["cateCode"];
         $code = $_POST["cateName"];
-        $sql = "INSERT INTO LOAIHANGHOA VALUES('".$name."','".$code."')";
-        if($conn->query($sql))
-            echo "Thành công";
-        else 
+        if(($_POST["cateCode"])=="" || ($_POST["cateName"])=="")
+        echo "Vui lòng nhập đầy đủ thông tin";
+        else{
+        $sql = "INSERT INTO LOAIHANGHOA VALUES('" . $name . "','" . $code . "')";
+        if ($conn->query($sql))
+            echo "Thêm thành công";
+        else
             echo "Tồn tại mã loại hàng này";
-        
+        }     
+    } 
 
-    }
+    else if ($_POST["action"] == "delCate") {
+        $code = $_POST["cateCode"];
+        $sql = "DELETE FROM LoaiHangHoa WHERE MaLoaiHang='".$code."';";
+        if ($conn->query($sql))
+            echo "Xóa thành công";
+        else
+            echo "Không xóa được loại hàng";
+        }     
+    
+    else if ($_POST["action"] == "changeView") {
+        $id = $_POST["id"];
+        $sql = "SELECT * FROM HANGHOA,HINHHANGHOA WHERE HANGHOA.MaLoaiHang='" . $id . "' and HINHHANGHOA.MSHH=HANGHOA.MSHH";
+        $result = $conn->query($sql);
+        $card = "";
+        while ($row = $result->fetch_assoc()) {
+            echo '
+        <div class="cardProduct">
+            <a href="views/products-info.php?id=' . $row["MSHH"] . '" style="text-decoration:none;">
+                <img src="imgs/' . $row["mahinh"] . '" class="cardImg" alt="Card image cap">
+                <div class="cardContent ">
+                    <h5>' . $row["TenHH"] . '</h5>
+                    <h4>' . $row["Gia"] . 'đ</h4>
+                    <hr class="border-top border-secondary">
+                    <h4>Số lượng còn lại: ' . $row["SoLuongHang"] . '</h4>
+                </div>
+            </a>
+        </div>';
+        }
+        if($result->num_rows == 0)
+            echo "
+            <h1>Chưa có mặt hàng nào thuộc loại hàng này</h1>";
+    }       
 }
