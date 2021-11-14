@@ -109,21 +109,19 @@ else {
         $MSDH = "DH" . $count . $_SESSION["iduser"];
         $TT = "Chưa xác nhận";
         $sql = 'INSERT INTO DATHANG VALUES(\'' . $MSDH . '\',\'' . $_SESSION['iduser'] . '\',NULL,\'' . $sentDate . '\',\'' . $takeDate . '\',\'' . $TT . '\',"' . $_POST["address"] . '")';
+       
         if ($conn->query($sql)) {
             foreach ($_SESSION["cartList"] as $item => $quantity) {
-                $sql1 = 'SELECT Gia FROM HANGHOA WHERE MSHH="' . $item . '";';
-
+                $sql1 = 'SELECT Gia FROM HANGHOA WHERE MSHH="' . $item . '";'; 
                 $result = $conn->query($sql1);
                 $row = $result->fetch_assoc();
                 $total = $row["Gia"] * $quantity;
-
-                $sql2 = 'INSERT INTO ChiTietDatHang VALUES("' . $MSDH . '","' . $item . '","' . $quantity . '","' . $total . '","0")';
+                $sql2 = 'INSERT INTO ChiTietDatHang VALUES("' . $MSDH . '","' . $quantity . '","' . $total . '",0,"' . $item . '")';
                 $sql4 = "SELECT SoLuongHang From Hanghoa where MSHH='" . $item . "' ;";
                 $result4 = $conn->query($sql4);
                 $row4 = $result4->fetch_assoc();
                 $slht = $row4["SoLuongHang"] - $quantity;
                 $sql3 = 'UPDATE HANGHOA SET SoLuongHang=' . $slht . ' WHERE MSHH="' . $item . '";';
-
                 if (!$conn->query($sql2) || !$conn->query($sql3)) {
                     echo 3;
                     return;
