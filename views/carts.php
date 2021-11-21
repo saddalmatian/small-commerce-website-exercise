@@ -105,14 +105,13 @@ else {
                     currentDate: currentDate
                 }
             }).done(function(response) {
-                alert(response);
-                // if(response=="1")
-                //     alert("Lỗi thêm thông tin đặt hàng");
-                // if(response=="2"){
-                //     alert("Đặt hàng thành công");
-                //     window.location = "../main.php";}
-                // if(response=="3")
-                //     alert("Lỗi thêm thông tin chi tiết đặt hàng");
+                if(response=="1")
+                    alert("Lỗi thêm thông tin đặt hàng");
+                if(response=="2"){
+                    alert("Đặt hàng thành công");
+                    window.location = "../main.php";}
+                if(response=="3")
+                    alert("Lỗi thêm thông tin chi tiết đặt hàng");
             })}
             else
                 alert("Giỏ hàng trống");
