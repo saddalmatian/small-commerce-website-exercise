@@ -97,9 +97,7 @@
                     <div class="fs-5 mb-5">
                     <input class="display-5 fw-bolder" id="gia' . $row["MSHH"] . '" value="' . $row["Gia"] . '";"/>Đ
                     </div>
-                    <textarea id="qc' . $row["MSHH"] . '" rows="5" cols="60"/>
-                    ' . $row["QuyCach"] . '
-                    </textarea>
+                    <textarea id="qc' . $row["MSHH"] . '" rows="5" cols="60"/>' . ltrim($row["QuyCach"], " ") . '</textarea>
                     <div class="d-flex">
                             <input class="btn btn-danger id="btnDel" onclick="delProd(\'' . $row["MSHH"] . '\')" flex-shrink-0" type="button" value="Xóa sản phẩm" />
                             <input class="btn btn-success id="btnUp" onclick="upProd(\'' . $row["MSHH"] . '\')" flex-shrink-0" type="button" value="Sửa sản phẩm" />
